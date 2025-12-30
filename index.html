@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Royal Palace - Rashin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gold: #c5a059; /* Luxury Gold */
+            --dark-bg: #1a1a1a;
+            --darker-bg: #0f0f0f;
+            --text-light: #f0f0f0;
+            --text-gray: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-gold);
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            transition: 0.4s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary-gold); }
+
+        .btn-book {
+            padding: 10px 25px;
+            background: var(--primary-gold);
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-book:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        /* --- Section Styling --- */
+        .section-padding { padding: 80px 10%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header span {
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        /* --- About Section --- */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: var(--darker-bg);
+        }
+
+        .about-text { flex: 1; }
+        .about-img { flex: 1; }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: -20px 20px 0px var(--primary-gold);
+        }
+
+        /* --- Dining / Food Menu --- */
+        .dining { background-color: var(--dark-bg); }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: #222;
+            padding: 20px;
+            border: 1px solid #333;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:hover { transform: translateY(-10px); border-color: var(--primary-gold); }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .dish-price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-gold);
+            color: #000;
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+
+        /* --- Rooms --- */
+        .rooms { background-color: var(--darker-bg); }
+
+        .room-card {
+            display: flex;
+            background: #1a1a1a;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+
+        .room-img { width: 50%; }
+        .room-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .room-info {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .amenities i { margin-right: 15px; color: var(--primary-gold); font-size: 1.2rem; }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-logo { font-family: 'Playfair Display'; color: var(--primary-gold); font-size: 2rem; margin-bottom: 20px; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 15px; }
+            .nav-links { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .hero h1 { font-size: 2.5rem; }
+            .about { flex-direction: column; }
+            .room-card { flex-direction: column; }
+            .room-img, .room-info { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ROYAL<span style="color:var(--primary-gold)">PALACE</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#dining">Dining</a>
+            <a href="#rooms">Rooms</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="tel:1234567890" class="btn-book">Book Now</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <h3>Welcome to Rashin</h3>
+        <h1>Experience Luxury & Comfort</h1>
+        <p>राशीन मधील सर्वात आलिशान हॉटेल. जिथे उत्तम जेवण आणि रॉयल राहणीमान तुमची वाट पाहत आहे.</p>
+        <div style="margin-top: 20px;">
+            <a href="#dining" class="btn-book" style="background: transparent; border: 1px solid var(--primary-gold); color: var(--primary-gold); margin-right: 10px;">View Menu</a>
+            <a href="tel:1234567890" class="btn-book">Call Us</a>
+        </div>
+    </section>
+
+    <section class="about section-padding" id="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Hotel Interior">
+        </div>
+        <div class="about-text">
+            <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+                <span>OUR STORY</span>
+                <h2 style="font-size: 2.5rem;">A Perfect Stay in Rashin</h2>
+            </div>
+            <p style="color: #aaa; line-height: 1.8; margin-bottom: 20px;">
+                जगदंबा देवीच्या दर्शनासाठी आलेल्या भाविकांसाठी आणि फॅमिलीसाठी आम्ही घेऊन आलो आहोत एक उत्तम सोय. आमच्याकडे शुद्ध शाकाहारी आणि मांसाहारी (Veg/Non-Veg) जेवणाची उत्तम सोय आहे. 
+            </p>
+            <ul style="list-style: none; margin-bottom: 20px;">
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--primary-gold)"></i> Large Parking Space (भव्य पार्किंग)</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--primary-gold)"></i> AC / Non-AC Family Rooms</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--primary-gold)"></i> Free High-Speed WiFi</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="dining section-padding" id="dining">
+        <div class="section-header">
+            <span>DELICIOUS FOOD</span>
+            <h2>Our Specialties</h2>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="dish-price">Special</div>
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Thali">
+                <h3>Maharashtrian Thali</h3>
+                <p style="color:#888; margin-top:10px;">अस्सल गावरान चव. पिठलं भाकरी आणि ठेचा.</p>
+            </div>
+            <div class="menu-card">
+                <div class="dish-price">Popular</div>
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Paneer">
+                <h3>Paneer Butter Masala</h3>
+                <p style="color:#888; margin-top:10px;">Rich creamy gravy with butter naan.</p>
+            </div>
+            <div class="menu-card">
+                <div class="dish-price">Hot</div>
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Chicken">
+                <h3>Chicken Handi</h3>
+                <p style="color:#888; margin-top:10px;">स्पेशल मसाले वापरून बनवलेली रस्सेदार चिकन हंडी.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="rooms section-padding" id="rooms">
+        <div class="section-header">
+            <span>STAY WITH US</span>
+            <h2>Luxury Rooms</h2>
+        </div>
+
+        <div class="room-card">
+            <div class="room-img">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Deluxe Room">
+            </div>
+            <div class="room-info">
+                <h3>Super Deluxe AC Room</h3>
+                <p style="color:#aaa; margin: 20px 0;">कपल्स आणि फॅमिलीसाठी योग्य. स्वच्छ आणि सुंदर रूम्स.</p>
+                <div class="amenities" style="margin-bottom: 30px;">
+                    <i class="fas fa-tv"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-snowflake"></i>
+                    <i class="fas fa-shower"></i>
+                </div>
+                <h3>₹ 1500 / Night</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-logo">ROYAL PALACE</div>
+        <p style="color:#888;">Near Karmala Road, Rashin - 414403</p>
+        <p style="color:#888; margin-top:10px;">Phone: +91 98765 43210</p>
+        <div style="margin-top: 30px;">
+            <a href="#" style="color:var(--primary-gold); margin:0 10px; font-size:1.5rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color:var(--primary-gold); margin:0 10px; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:var(--primary-gold); margin:0 10px; font-size:1.5rem;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="margin-top:50px; color:#555; font-size:0.8rem;">Designed by Your Name</p>
+    </footer>
+
+</body>
+</html>
